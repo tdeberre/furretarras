@@ -1,1 +1,7 @@
-class Modele {}
+class DB {
+  chercherproduit() {}
+
+  creerproduit() {}
+  supprimmerproduit() {}
+  modifierproduit() {}
+}
