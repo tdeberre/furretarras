@@ -1,12 +1,20 @@
-import 'dart:io';
-import 'package:mysql1/mysql1.dart';
+import 'vue.dart';
+import 'modele.dart';
 
 main(List<String> args) {
-  ConnectionSettings settings = ConnectionSettings(
-    host: 'localhost',
-    port: 3306,
-    user: 'user',
-    password: 'password',
-    db: 'db',
-  );
+  int choix = 0;
+  while (choix != 3) {
+    choix = Vue.demanderaction();
+    switch (choix) {
+      //si rechercher
+      case 1:
+        String critere = Vue.demandercritere();
+        String valeur = Vue.demandervaleur();
+        DB.chercherproduit(critere, valeur);
+        break;
+      //si modifier
+      case 2:
+        break;
+    }
+  }
 }
