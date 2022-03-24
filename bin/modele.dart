@@ -2,13 +2,15 @@ import 'package:mysql1/mysql1.dart';
 
 class DB {
   //Variable
+  /*
   int _idProduit;
   String _nomProduit;
   String _typeProduit;
   int _prixProduit;
   int _quaniteProduit;
+  */
   //TODO: Create database and change the settings depending on the new DB that will be created.
-  ConnectionSettings settings = ConnectionSettings(
+  static ConnectionSettings settings = ConnectionSettings(
     host: 'localhost',
     port: 3306,
     user: 'user',
@@ -17,7 +19,7 @@ class DB {
   );
 
   //Builder
-  DB(this._idProduit, this._nomProduit, this._typeProduit, this._prixProduit,
+  /*DB(this._idProduit, this._nomProduit, this._typeProduit, this._prixProduit,
       this._quaniteProduit);
 
   //Set and Get
@@ -60,13 +62,42 @@ class DB {
   int getQuantiteProduit() {
     return _quaniteProduit;
   }
+*/
 
   //Function
-  static chercherproduit(String lookup, String valeur) {
-    String request = 'SELECT * FROM Produits WHERE $lookup = $valeur';
+  static void chercherproduit(String lookup, String valeur) async {
+    try {
+      MySqlConnection connexion = await MySqlConnection.connect(settings);
+      String request = 'SELECT * FROM Produits WHERE $lookup = $valeur';
+      try {
+        connexion.query(request);
+      } catch (e) {
+        print(e.toString());
+      }
+      connexion.close();
+    } catch (e) {
+      print(e.toString());
+    }
   }
 
-  creerproduit() {}
+  static void creerproduit(int id, String nom, String type, int prix,
+      int nbproduit, int idauteur, int idediteur) async {
+    //NOTE TO SELF: use INSERT INTO table VALUES ('valeur 1', 'valeur 2', ...) to add a new product to database.
+    try {
+      MySqlConnection connexion = await MySqlConnection.connect(settings);
+      String request =
+          'INSERT INTO produits VALUES ($id, $nom, $type, $prix, $nbproduit, $idauteur, $idediteur)';
+      try {
+        connexion.query(request);
+      } catch (e) {
+        print(e.toString());
+      }
+      connexion.close();
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
   supprimmerproduit() {}
   modifierproduit() {}
 }
