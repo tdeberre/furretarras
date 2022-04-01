@@ -2,8 +2,9 @@ import 'vue.dart';
 import 'modele.dart';
 
 main(List<String> args) {
-  /*int choix = 0;
-  while (choix != 3) {
+  int choix = 0;
+  while (choix != 5) {
+    //demande quelle action realiser
     choix = Vue.demanderaction();
     switch (choix) {
       //si rechercher
@@ -14,8 +15,20 @@ main(List<String> args) {
         break;
       //si modifier
       case 2:
+        int id = Vue.demanderid();
+        String critere = Vue.demandercritere();
+        String valeur = Vue.demandervaleur();
+        DB.modifierproduit(id, critere, valeur);
+        break;
+      //si ajouter
+      case 3:
+        List<String>.generate(5, (index) => Vue.demanderproduit()[index]);
+        //DB.creerproduit() ;
+        break;
+      //si supprimer
+      case 4:
+        DB.supprimmerproduit(Vue.demanderid());
         break;
     }
-  }*/
-  DB.chercherproduit("one", "two");
+  }
 }

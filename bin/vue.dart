@@ -1,57 +1,48 @@
-import 'dart:io';
+import 'saisie.dart';
 
 class Vue {
   //ecran de choix
   static int demanderaction() {
     print(
-        "choisissez : \n 1 . chercher un produit.\n2 . modifier la base de donnée\n3 . quitter\n");
-    int selection = saisirint();
+        "choisissez : \n1 . chercher un produit.\n2 . ajouter un produit\n3 . modifier un produit\n4 . supprimer un produit\n5 . quitter\n");
+    int selection = Saisir.entier();
     return selection;
   }
 
   //ecran si chercher
   static String demandercritere() {
     print("selon quel critere realiser la recherche :\n");
-    String saisie = saisirString();
+    String saisie = Saisir.text();
     return saisie;
   }
 
   static String demandervaleur() {
     print("entrez la valeur :\n");
-    String saisie = saisirString();
+    String saisie = Saisir.text();
     return saisie;
   }
 
   //ecran si supprimer
   static int demanderid() {
-    print("quel est l'id du produit que vous souhaitez supprimer :\n");
-    int saisie = saisirint();
+    print("entrez l'id du produit :\n");
+    int saisie = Saisir.entier();
     return saisie;
   }
 
   //ecran si ajouter
-  static demanderproduit() {}
-
-  //saisie des sentiers/strings
-  static int saisirint() {
-    int saisie;
-    try {
-      saisie = int.parse(stdin.readLineSync().toString());
-    } catch (e) {
-      print(e.toString());
-      saisie = saisirint();
-    }
-    return saisie;
-  }
-
-  static String saisirString() {
-    String saisie;
-    try {
-      saisie = stdin.readLineSync().toString();
-    } catch (e) {
-      print(e.toString());
-      saisie = saisirString();
-    }
-    return saisie;
+  static demanderproduit() {
+    print("entrez le nom :\n");
+    String nom = Saisir.text();
+    print("entrez le type :\n");
+    String type = Saisir.text();
+    print("entrez le prix :\n");
+    String prix = Saisir.text();
+    print("entrez la quatite :\n");
+    String quantite = Saisir.text();
+    print("entrez l'id de l'auteur :\n");
+    String idauteur = Saisir.text();
+    print("entrez l'id de l'editeur :\n");
+    String idediteur = Saisir.text();
+    return [nom, type, prix, quantite, idauteur, idediteur];
   }
 }

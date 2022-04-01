@@ -80,13 +80,14 @@ class DB {
     }
   }
 
-  static void creerproduit(int id, String nom, String type, int prix,
-      int nbproduit, int idauteur, int idediteur) async {
+//les arguments sont maintenant des Strings et sont changé en entiers dans la requete pour faciliter le traitement par le modele
+  static void creerproduit(String nom, String type, String prix,
+      String nbproduit, String idauteur, String idediteur) async {
     //NOTE TO SELF: use INSERT INTO table VALUES ('valeur 1', 'valeur 2', ...) to add a new product to database.
     try {
       MySqlConnection connexion = await MySqlConnection.connect(settings);
       String request =
-          'INSERT INTO produits VALUES ($id, $nom, $type, $prix, $nbproduit, $idauteur, $idediteur)';
+          'INSERT INTO produits VALUES ($nom, $type, ${int.parse(prix)}, ${int.parse(nbproduit)}, ${int.parse(idauteur)},${int.parse(idauteur)} )';
       try {
         connexion.query(request);
       } catch (e) {
@@ -98,6 +99,8 @@ class DB {
     }
   }
 
-  supprimmerproduit() {}
-  modifierproduit() {}
+  //supprimer un produit par son id
+  static supprimmerproduit(int id) async {}
+  //modifier un produit
+  static modifierproduit(int id, String critere, String valeur) async {}
 }
