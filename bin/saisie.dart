@@ -1,4 +1,5 @@
 import 'dart:io';
+//cette classe permet de faciliter les saisies sur la vue
 
 class Saisir {
 //saisie des entiers
