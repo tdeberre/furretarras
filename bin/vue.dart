@@ -1,6 +1,17 @@
 import 'saisie.dart';
 
 class Vue {
+  //ecran de connection
+  static Session ecranconnection(){
+    //"dartuser" par defaut
+    print("identifiant :");
+    String id = text();
+    //"btsinfo" par defaut
+    print("mot de passe :");
+    String pass = text();
+    return Session masession = new Session(id,pass);
+  }
+
   //ecran de choix
   static int demanderaction() {
     print(
@@ -44,5 +55,13 @@ class Vue {
     print("entrez l'id de l'editeur :\n");
     String idediteur = Saisir.text();
     return [nom, type, prix, quantite, idauteur, idediteur];
+  }
+  //afficher un tableau
+  static afficherreponse(Result reponse){
+    for(var row in reponse){
+      for(var field in row){
+        print(field.toString());
+      }
+    }
   }
 }

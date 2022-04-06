@@ -13,16 +13,20 @@ class Session {
       db: 'furetDB',
     );
   }
-  querryfuret(String request) async {
+  
+  //fonctions
+  Results querryfurret(String request) async {
     try {
       MySqlConnection connexion = await MySqlConnection.connect(this._settings);
       try {
-        connexion.query(request);
+        Results reponse = connexion.query(request);
       } catch (e) {
         print(e.toString());
       }
     } catch (e) {
       print(e.toString());
     }
+    return reponse;
   }
+
 }
