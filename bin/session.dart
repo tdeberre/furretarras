@@ -6,13 +6,13 @@ class Session {
   //attributs
   late ConnectionSettings _settings;
   //constructeur
-  Session(user, password) {
+  Session(database, user, password) {
     this._settings = ConnectionSettings(
       host: 'localhost',
       port: 3306,
       user: '$user',
       password: '$password',
-      db: 'furetDB',
+      db: '$database',
     );
   }
   //puis on s'en sert pour se connecter a la db et lancer une requete

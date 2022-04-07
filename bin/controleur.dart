@@ -3,8 +3,7 @@ import 'modele.dart';
 import 'session.dart';
 
 main(List<String> args) {
-  //ProcessResult result = await Process.run('bash', ['-c', cmd]);
-  Modele.initsession();
+  DB.initdb();
   int choix = 0;
   while (choix != 5) {
     //demande quelle action realiser

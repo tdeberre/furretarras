@@ -1,5 +1,6 @@
 import 'package:mysql1/mysql1.dart';
 import 'session.dart';
+import 'dart:io';
 
 class DB {
   //attributs
@@ -28,4 +29,8 @@ class DB {
 
   //modifier un produit
   static modifierproduit(int id, String critere, String valeur) async {}
+
+  static initdb() async {
+    ProcessResult result = await Process.run('bash', ['-c', ". createDB.sh"]);
+  }
 }

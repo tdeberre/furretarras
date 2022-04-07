@@ -1,15 +1,20 @@
+import 'package:mysql1/mysql1.dart';
 import 'saisie.dart';
+import 'session.dart';
 
 class Vue {
   //ecran de connection
-  static Session ecranconnection(){
+  static Session ecranconnection() {
+    //"furretDB" par defaut
+    print("base de donnée :");
+    String database = Saisir.text();
     //"dartuser" par defaut
     print("identifiant :");
-    String id = text();
+    String id = Saisir.text();
     //"btsinfo" par defaut
     print("mot de passe :");
-    String pass = text();
-    return Session masession = new Session(id,pass);
+    String pass = Saisir.text();
+    return new Session(database, id, pass);
   }
 
   //ecran de choix
@@ -56,10 +61,11 @@ class Vue {
     String idediteur = Saisir.text();
     return [nom, type, prix, quantite, idauteur, idediteur];
   }
+
   //afficher un tableau
-  static afficherreponse(Result reponse){
-    for(var row in reponse){
-      for(var field in row){
+  static afficherreponse(Results reponse) {
+    for (var row in reponse) {
+      for (var field in row) {
         print(field.toString());
       }
     }
