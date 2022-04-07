@@ -14,15 +14,17 @@ class DB {
 
   //entre un produit da la table de la session
   //les arguments sont des Strings et sont changé en entiers dans la requete pour faciliter l'utilisation
-  static void creerproduit(String nom, String type, String prix,String nbproduit, String idauteur, String idediteur) async {
+  static void creerproduit(String nom, String type, String prix,
+      String nbproduit, String idauteur, String idediteur) async {
     // ${int.parse(idauteur)}
-    DB.masession.querry('INSERT INTO produits VALUES ($nom, $type, ${int.parse(prix)}, ${int.parse(nbproduit)},${int.parse(idediteur)} )');
+    DB.masession.querry(
+        'INSERT INTO produits VALUES ($nom, $type, ${int.parse(prix)}, ${int.parse(nbproduit)},${int.parse(idediteur)} )');
   }
 
   //supprimer un produit par son id
   //utiliser la requete : DELETE FROM `utilisateur` WHERE `id` = 1
   static supprimmerproduit(int id) async {
-    DB.masession.querry("DELETE FROM `utilisateur` WHERE `id` = $id")
+    DB.masession.querry("DELETE FROM `utilisateur` WHERE `id` = $id");
   }
 
   //modifier un produit
