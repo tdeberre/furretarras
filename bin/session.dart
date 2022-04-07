@@ -18,7 +18,7 @@ class Session {
   //puis on s'en sert pour se connecter a la db et lancer une requete
 
   //fonctions
-  Future<Results> querryfurret(String request) async {
+  Future<Results> querry(String request) async {
     dynamic reponse;
     try {
       MySqlConnection connexion = await MySqlConnection.connect(this._settings);

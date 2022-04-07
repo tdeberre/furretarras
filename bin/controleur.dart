@@ -1,6 +1,5 @@
 import 'vue.dart';
 import 'modele.dart';
-import 'session.dart';
 
 main(List<String> args) {
   DB.initdb();
