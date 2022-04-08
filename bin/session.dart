@@ -4,7 +4,7 @@ class Session {
   //on garde les identifiants saisi au lancement
 
   //attributs
-  ConnectionSettings _settings;
+  late ConnectionSettings _settings;
   //constructeur
   Session(database, user, password) {
     _settings = ConnectionSettings(

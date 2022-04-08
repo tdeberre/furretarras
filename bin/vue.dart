@@ -1,10 +1,11 @@
 import 'package:mysql1/mysql1.dart';
 import 'saisie.dart';
-import 'session.dart';
+import 'modele.dart';
 
 class Vue {
   //ecran de connection
-  static Session ecranconnection() {
+  static ecranconnection() {
+    print("\nConnection\n");
     //"furretDB" par defaut
     print("base de donnée :");
     String database = Saisir.text();
@@ -13,14 +14,14 @@ class Vue {
     String id = Saisir.text();
     //"btsinfo" par defaut
     print("mot de passe :");
-    String pass = Saisir.text();
-    return new Session(database, id, pass);
+    String pass = Saisir.mdp();
+    DB.setSession(database, id, pass);
   }
 
   //ecran de choix
   static int demanderaction() {
     print(
-        "choisissez : \n1 . chercher un produit.\n2 . ajouter un produit\n3 . modifier un produit\n4 . supprimer un produit\n5 . quitter\n");
+        "\nchoisissez : \n1 . chercher un produit.\n2 . modifier un produit\n3 . ajouter un produit\n4 . supprimer un produit\n5 . quitter\n");
     int selection = Saisir.entier();
     return selection;
   }
@@ -55,11 +56,11 @@ class Vue {
     String prix = Saisir.text();
     print("entrez la quatite :\n");
     String quantite = Saisir.text();
-    print("entrez l'id de l'auteur :\n");
-    String idauteur = Saisir.text();
-    print("entrez l'id de l'editeur :\n");
-    String idediteur = Saisir.text();
-    return [nom, type, prix, quantite, idauteur, idediteur];
+    print("entrez le nom de l'editeur :\n");
+    String nomediteur = Saisir.text();
+    print("entrez l'adressse de l'editeur :\n");
+    String adresseediteur = Saisir.text();
+    return [nom, type, prix, quantite, nomediteur, adresseediteur];
   }
 
   //afficher un tableau

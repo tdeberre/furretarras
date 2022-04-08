@@ -1,7 +1,9 @@
 import 'vue.dart';
 import 'modele.dart';
+import 'package:mysql1/mysql1.dart';
 
-main(List<String> args) {
+main(List<String> args) async {
+  Vue.ecranconnection();
   DB.initdb();
   int choix = 0;
   while (choix != 5) {
@@ -12,19 +14,20 @@ main(List<String> args) {
       case 1:
         String critere = Vue.demandercritere();
         String valeur = Vue.demandervaleur();
-        DB.chercherproduit(critere, valeur);
+        Results requete = await DB.chercherproduit(critere, valeur);
+        Vue.afficherreponse(requete);
         break;
       //si modifier
       case 2:
         int id = Vue.demanderid();
-        String critere = Vue.demandercritere();
-        String valeur = Vue.demandervaleur();
-        DB.modifierproduit(id, critere, valeur);
+        List<String> list = Vue.demanderproduit();
+        DB.modifierproduit(
+            id, list[0], list[1], list[2], list[3], list[4], list[5]);
         break;
       //si ajouter
       case 3:
-        List<String>.generate(5, (index) => Vue.demanderproduit()[index]);
-        //DB.creerproduit() ;
+        List<String> list = Vue.demanderproduit();
+        DB.creerproduit(list[0], list[1], list[2], list[3], list[4], list[5]);
         break;
       //si supprimer
       case 4:

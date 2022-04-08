@@ -25,4 +25,18 @@ class Saisir {
     }
     return saisie;
   }
+
+//saisie des string
+  static String mdp() {
+    String saisie;
+    try {
+      stdin.echoMode = false;
+      saisie = stdin.readLineSync().toString();
+      stdin.echoMode = true;
+    } catch (e) {
+      print(e.toString());
+      saisie = mdp();
+    }
+    return saisie;
+  }
 }
