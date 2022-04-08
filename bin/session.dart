@@ -4,10 +4,10 @@ class Session {
   //on garde les identifiants saisi au lancement
 
   //attributs
-  late ConnectionSettings _settings;
+  ConnectionSettings _settings;
   //constructeur
   Session(database, user, password) {
-    this._settings = ConnectionSettings(
+    _settings = ConnectionSettings(
       host: 'localhost',
       port: 3306,
       user: '$user',
@@ -21,7 +21,7 @@ class Session {
   Future<Results> querry(String request) async {
     dynamic reponse;
     try {
-      MySqlConnection connexion = await MySqlConnection.connect(this._settings);
+      MySqlConnection connexion = await MySqlConnection.connect(_settings);
       try {
         reponse = connexion.query(request);
       } catch (e) {
